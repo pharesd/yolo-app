@@ -1,4 +1,4 @@
-version: '3'
+version: '3.1'
 
 services:
 
@@ -21,3 +21,18 @@ services:
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: example
       ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
+    networks:
+      - yolo-network
+
+  client:
+    build:
+      context: app/client
+      dockerfile: client/Dockerfile-client
+    ports:
+      - 3000=3000
+    networks:
+      - yolo-network
+
+networks:
+  yolo-network:
+    driver: bridge
