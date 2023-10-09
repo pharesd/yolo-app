@@ -2,37 +2,57 @@ version: '3.1'
 
 services:
 
-  mongo_db:
+  database:
     image: mongo
+    container_name: yolo-mongo-db
     restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
+    ports:
+      - "27017:27017"
+    networks:
+      - yoloapp-network
+    volumes:
+      - type: volume
+        source: yolo-data-volume
+        target: /data/db
 
   backend:
+    image: pharesd/yolo-backend:v0.0.0
+    container_name: yolo-backend
     build:
-      context: contextPath
-      dockerfile: backend/Dockerfile-backend
+      context: ./backend
+      dockerfile: Dockerfile-backend
+    restart: always
     depends_on: 
-      - mongo_db
+      - database
     ports:
-      - 5000:5000
-    environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: example
-      ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
+      - "5000:5000"
     networks:
-      - yolo-network
+      - yoloapp-network
 
   client:
+    image: pharesd/yolo-client:v0.0.0
+    container_name: yolo-client
     build:
-      context: app/client
-      dockerfile: client/Dockerfile-client
+      context: ./client
+      dockerfile: Dockerfile-client
+    stdin_open: true
+    tty: true
+    depends_on:
+      - backend
     ports:
-      - 3000=3000
+      - "3000:3000"
     networks:
-      - yolo-network
+      - yoloapp-network
 
 networks:
-  yolo-network:
+  yoloapp-network:
     driver: bridge
+    attachable: true
+    ipam:
+      config:
+        - subnet: 172.17.0.0/16
+          ip_range: 172.17.0.0/16
+
+volumes:
+  yolo-data-volume:
+    driver: local
