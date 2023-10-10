@@ -46,6 +46,7 @@ services:
 
 networks:
   yoloapp-network:
+    name: yolo-app-network
     driver: bridge
     attachable: true
     ipam:
