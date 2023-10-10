@@ -1,14 +1,20 @@
+# Dockerfile for the backend
 
-FROM node:alpine
+FROM node:current-alpine3.17 AS build
 
-WORKDIR /app/backend
+WORKDIR /usr/src/app
 
-COPY backend/package*.json ./
+COPY ./package*.json ./
+RUN npm ci
+COPY . .
 
-RUN npm install
 
-COPY backend/ .
+FROM alpine:3.16
 
+WORKDIR /usr/src/app
+
+RUN apk update && apk add --update nodejs
+COPY --from=build /usr/src/app .
 EXPOSE 5000
 
-CMD ["npm", "start"]
+CMD ["node", "server.js"]
