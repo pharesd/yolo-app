@@ -1,14 +1,22 @@
 # Dockerfile for the client
+FROM node:current-alpine3.17 AS build
 
-FROM node:alpine
+WORKDIR /usr/src/app
 
-WORKDIR /app/client
+COPY ./package*.json ./
 
-COPY client/package*.json ./
+RUN npm ci
 
-RUN npm install
+COPY . .
 
-COPY client/ .
+
+FROM alpine:3.16
+
+WORKDIR /usr/src/app
+
+RUN apk update && apk add npm
+
+COPY --from=build /usr/src/app .
 
 EXPOSE 3000
 
