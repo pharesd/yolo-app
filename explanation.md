@@ -48,5 +48,5 @@ You can find the DockerHub images at the following link: https://hub.docker.com/
 ## Screenshot of Deployed Images
 
 Here is a screenshot of the deployed images in DockerHub:
-![DockerHub image](image.png)
+![DockerHub image](DockerHub-screenshot.png)
 
