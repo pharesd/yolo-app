@@ -16,7 +16,7 @@ services:
         target: /data/db
 
   backend:
-    image: pharesd/yolo-backend:v0.0.0
+    image: pharesd/yolo-backend:v0.0.1
     container_name: yolo-backend
     build:
       context: ./backend
@@ -30,7 +30,7 @@ services:
       - yoloapp-network
 
   client:
-    image: pharesd/yolo-client:v0.0.0
+    image: pharesd/yolo-client:v0.0.1
     container_name: yolo-client
     build:
       context: ./client
