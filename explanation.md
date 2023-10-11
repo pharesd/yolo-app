@@ -41,7 +41,11 @@ Utilized git branches for feature development for code review and merging. I mai
 
 I adhered to Docker image tag naming standards for ease of identification. I used semantic versioning to tag the images, providing clear version information for each release.
 
-## DockerHub Screenshot
+## DockerHub Image Repository
+
+You can find the DockerHub images at the following link: https://hub.docker.com/repositories/pharesd
+
+## Screenshot of Deployed Images
 
 Here is a screenshot of the deployed images in DockerHub:
 ![DockerHub image](image.png)
