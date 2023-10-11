@@ -30,6 +30,6 @@
 6. **Enjoy Your YOLO App:**
    - You're all set! Start using the YOLO App in your local development environment.
 
-   ![Yolo app productrs screenshot](image-1.png)
+   ![Yolo app productrs screenshot](products-screenshot.png)
 
 
