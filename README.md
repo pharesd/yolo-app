@@ -1,23 +1,33 @@
-# Requirements
-Make sure that you have the following installed:
-- [node](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04) 
-- npm 
-- [MongoDB](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/) and start the mongodb service with `sudo service mongod start`
+## How to Use
 
-## Navigate to the Client Folder 
- `cd client`
+1. **Prerequisites:**
+   - Ensure you have Docker and Docker Compose installed on your system.
 
-## Run the folllowing command to install the dependencies 
- `npm install`
+2. **Clone the YOLO App Repository:**
+   - Use the following command to clone the YOLO App repository to your local machine:
 
-## Run the folllowing to start the app
- `npm start`
+     ```shell
+     git clone https://github.com/pharesd/yolo.git
+     ```
 
-## Open a new terminal and run the same commands in the backend folder
- `cd ../backend`
+3. **Navigate to the Project Directory:**
+   - Change your current working directory to the YOLO App project folder:
 
- `npm install`
+     ```shell
+     cd yolo
+     ```
 
- `npm start`
+4. **Start the Services:**
+   - Run the following command to start the YOLO App services in the background:
 
- ### Go ahead a nd add a product (note that the price field only takes a numeric input)
+     ```shell
+     docker-compose up -d
+     ```
+
+5. **Access the YOLO App:**
+   - Open your web browser and visit [http://localhost:3000](http://localhost:3000) to access the YOLO App.
+
+6. **Enjoy Your YOLO App:**
+   - You're all set! Start using the YOLO App in your local development environment.
+
+
