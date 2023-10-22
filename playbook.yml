@@ -1,50 +1,8 @@
 - hosts: all
-  tasks:
-
-  - name: Create yolo network
-    community.docker.docker_network:
-      name: yolo-network
-      driver_options:
-        com.docker.network.bridge.name: net2
-      ipam_config:
-      - subnet: 172.23.27.0/24
-        gateway: 172.23.27.2
-        iprange: 172.23.27.0/26
-
-  - name: Create a volume
-    community.docker.docker_volume:
-      name: yolo-vol
-
-  - name: Deploy mongodb
-    community.docker.docker_container:
-      name: mongo-db
-      image: mongo
-      restart_policy: always
-      ports:
-      - "27017:27017"
-      volumes:
-      - type: volume
-        source: yolo-vol
-        target: /data/db
-      networks:
-      - name: yolo-network
-
-  - name: Deploy backend container
-    community.docker.docker_container:
-      name: yolo-backend
-      image: pharesd/pharesd/yolo-backend:v0.0.1
-      restart_policy: always
-      ports:
-      - 5000:5000
-      networks:
-      - name: yolo-network
-
-  - name: Deploy client container
-    community.docker.docker_container:
-      name: yolo-backend
-      image: pharesd/pharesd/yolo-client:v0.0.1
-      ports:
-      - 3000:3000
-      networks:
-      - name: yolo-network
-
+  become: true
+  gather_facts: false
+  roles:
+    - docker
+    - database
+    - backend
+    - client
