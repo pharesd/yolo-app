@@ -1,0 +1,120 @@
+---
+- name: Install docker packages
+  remote_user: vagrant
+  apt:
+    pkg:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - software-properties-common
+      - python3-pip
+      - virtualenv
+      - python3-setuptools
+    state: latest
+    update_cache: true
+    #name: name: ['apt-transport-https','ca-certificates', 'curl', 'software-properties-common']
+    #state: present
+    #update_cache: yes
+  tags:
+    - docker
+- name: Add Docker s GPG key for ubuntu from official site
+  remote_user: vagrant
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+  tags:
+    - docker
+- name: Verify gpg key with the fingerprint
+  remote_user: vagrant
+  apt_key:
+    id: 0EBFCD88
+    state: present
+  tags:
+    - docker
+- name: Configure Docker for ubuntu stable repository
+  remote_user: vagrant
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable
+    state: present
+    update_cache: yes
+  tags:
+    - docker
+- name: Update apt packages
+  remote_user: vagrant
+  apt:
+    update_cache: yes
+  tags:
+    - docker
+- name: Install docker-ce
+  remote_user: vagrant
+  apt:
+    name: docker-ce
+    state: present
+    update_cache: yes
+  tags:
+    - docker
+- name: Add "vagrant" user to "docker" group
+  remote_user: vagrant
+  user:
+    name: "vagrant"
+    group: "docker"
+    append: yes
+  tags:
+    - docker
+- name: Install docker-compose from official github repo
+  remote_user: vagrant
+  get_url:
+    url : https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64
+    dest: /usr/local/bin/docker-compose
+    mode: 'u+x,g+x'
+
+- name: Append to group
+  add_host:
+    hostname: yolo-app
+    groups: tvagrant
+  #- name: Create yolo network
+  #  community.docker.docker_network:
+  #    name: yolo-network
+  #    driver_options:
+  #      com.docker.network.bridge.name: net2
+  #    ipam_config:
+  #    - subnet: 172.23.27.0/24
+  #      gateway: 172.23.27.2
+  #      iprange: 172.23.27.0/26
+#
+  #- name: Create a volume
+  #  community.docker.docker_volume:
+  #    name: yolo-vol
+#
+  #- name: Deploy mongodb
+  #  community.docker.docker_container:
+  #    name: mongo-db
+  #    image: mongo
+  #    restart_policy: always
+  #    ports:
+  #    - "27017:27017"
+  #    volumes:
+  #    - type: volume
+  #      source: yolo-vol
+  #      target: /data/db
+  #    networks:
+  #    - name: yolo-network
+#
+  #- name: Deploy backend container
+  #  community.docker.docker_container:
+  #    name: yolo-backend
+  #    image: pharesd/pharesd/yolo-backend:v0.0.1
+  #    restart_policy: always
+  #    ports:
+  #    - 5000:5000
+  #    networks:
+  #    - name: yolo-network
+#
+  #- name: Deploy client container
+  #  community.docker.docker_container:
+  #    name: yolo-backend
+  #    image: pharesd/pharesd/yolo-client:v0.0.1
+  #    ports:
+  #    - 3000:3000
+  #    networks:
+  #    - name: yolo-network
