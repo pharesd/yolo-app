@@ -2,7 +2,6 @@
   become: true
   gather_facts: false
   roles:
-    - docker
-    - database
-    - backend
-    - client
+    - install_docker
+    #- git_clone
+    - deployment
