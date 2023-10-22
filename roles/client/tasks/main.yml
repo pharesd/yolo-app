@@ -1,0 +1,9 @@
+- name: Deploy client container
+  community.docker.docker_container:
+    name: yolo-client
+    image: pharesd/yolo-client:v0.0.1
+    command: tail -f /dev/null
+    ports:
+    - 3000:3000
+    networks:
+    - name: yolo-network
