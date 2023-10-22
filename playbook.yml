@@ -1,0 +1,33 @@
+- hosts: all
+  tasks:
+  - name: Deploy mongodb
+    community.docker.docker_contianer:
+      name: mongo-db
+      image: mongo
+      volumes:
+      - name: yolo-vol
+        target: /data/db
+      networks:
+      - name: yolo-network
+
+  - name: Deploy backend container
+    community.docker.docker_conaatainer:
+      name: yolo-backend
+      image: pharesd/pharesd/yolo-backend:v0.0.1
+      ports:
+      - 5000:5000
+      networks:
+      - name: yolo-network
+
+  - name: Deploy client container
+    community.docker.docker_conaatainer:
+      name: yolo-backend
+      image: pharesd/pharesd/yolo-client:v0.0.1
+      ports:
+      - 3000:3000
+      networks:
+      - name: yolo-network
+
+  - name: Create yolo network
+    community.docker.docker_network:
+      name: yolo-network
