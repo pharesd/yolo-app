@@ -3,10 +3,10 @@
   gather_facts: false
   roles:
     - install_docker
-    - network
-    - volume
-    - database
-    - backend
-    - client
-    #- git_clone
+    - git_clone
+    - create_docker_network
+    - create_docker_volume
+    - database_container
+    - backend_container
+    - client_container
     #- deployment
