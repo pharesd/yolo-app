@@ -1,52 +1,46 @@
-# Project Explanation
+# Vagrant and Ansible Project README
 
-## Base Image Selection
+This project uses Vagrant and Ansible to set up a virtual machine (VM) and deploy a Dockerized application. The project structure includes a Vagrantfile, an Ansible playbook, and two roles. The first role installs Docker and its dependencies, whereas the second role clones the application's Git repository, changes the directory to the root directory, and deploys the application using the `docker-compose up -d` command.
 
-In this project, I made careful choices for the base images used in each container to optimize image size and functionality. I utilized Alpine Linux-based images to keep container sizes small, and used official Node.js images for the backend and frontend containers to leverage well-maintained and secure base images.
+## Prerequisites
 
-## Dockerfile Directives
+Before you begin, ensure you have the following prerequisites installed on your local machine:
 
-### Backend Container
-- In the backend Dockerfile, I used the following directives:
-  - `FROM` to select the Node.js 14 image for the build stage.
-  - `WORKDIR` to set the working directory.
-  - `COPY` to copy package files and source code.
-  - `RUN` to install npm dependencies.
-  - Another `FROM` to create the final image with a minimal Alpine Linux base.
-  - Installation of Node.js runtime in the final image.
-  - `COPY --from` to copy the built application from the build stage.
-  - Exposing port 5000 and specifying the command to run the server.
+- [Vagrant](https://www.vagrantup.com/)
+- [VirtualBox](https://www.virtualbox.org/) (or your preferred virtualization provider)
+- [Ansible](https://www.ansible.com/)
 
-### Frontend Container
-- Similar to the backend, the frontend Dockerfile includes directives to:
-  - Select the Node.js 14 image.
-  - Set the working directory.
-  - Copy package files and source code.
-  - Install npm dependencies.
-  - Expose port 3000 and specify the command to run the frontend.
+## Project Structure
 
-## Docker-Compose Networking
+The project directory structure looks like this:
 
-I used Docker Compose to manage the multi-container application. I allocated application ports for the frontend and backend containers, enabling them to communicate. Additionally, I implemented a bridge network to allow containers to communicate with each other using service names as hostnames.
+- `Vagrantfile`: Defines the VM setup using Vagrant.
+- `ansible/`: Directory containing Ansible-related files.
+  - `playbook.yml`: Ansible playbook for provisioning the VM.
+  - `roles/`: Directory containing Ansible roles.
+    - `docker/`: Role for installing Docker and its dependencies.
+      - `tasks/main.yml`: Tasks for Docker installation.
+      - `defaults/main.yml`: Role-specific variables (e.g., Docker Compose path).
+    - `app/`: Role for deploying the application.
+      - `tasks/main.yml`: Tasks for cloning the Git repository and deploying the app.
+      - `defaults/main.yml`: Role-specific variables (if needed).
+- `README.md`: This documentation file.
 
-## Docker-Compose Volumes
+## Getting Started
 
-I defined  a volume in the Docker Compose file to ensure data persistence. This volume is used for database, configuration files, or any data that should survive container restarts.
+1. Clone this repository to your local machine:
 
-## Git Workflow
+   ```bash
+   git clone https://github.com/yourusername/your-repo.git
 
-Utilized git branches for feature development for code review and merging. I maintained a clear commit history and used version control best practices.
+2. **Change into the project directory:**
+    ```bash
+    cd yolo
 
-## Docker Image Tag Naming
+3. Start the VM using Vagrant:
+    ```bash
+    vagrant up
 
-I adhered to Docker image tag naming standards for ease of identification. I used semantic versioning to tag the images, providing clear version information for each release.
 
-## DockerHub Image Repository
-
-You can find the DockerHub images at the following link: https://hub.docker.com/repositories/pharesd
-
-## Screenshot of Deployed Images
-
-Here is a screenshot of the deployed images in DockerHub:
-![DockerHub image](DockerHub-screenshot.png)
-
+## Accessing the Application
+Once the provisioning is complete, you can access your Dockerized application via the VM's IP address or domain name. Be sure to update the IP address or hostname in your application configuration as needed.
