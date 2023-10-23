@@ -31,7 +31,7 @@ The project directory structure looks like this:
 1. Clone this repository to your local machine:
 
    ```bash
-   git clone https://github.com/yourusername/your-repo.git
+   git clone https://github.com/pharesd/yolo.git
 
 2. **Change into the project directory:**
     ```bash
