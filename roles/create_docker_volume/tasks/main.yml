@@ -1,6 +1,4 @@
-- name: Create a volume
+---
+- name: Create Docker volume
   community.docker.docker_volume:
     name: yolo-vol
-    #driver_options:
-    #  type: btrfs
-    #  device: /dev/sda2
