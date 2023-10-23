@@ -1,0 +1,10 @@
+- name: Deploy backend container
+  community.docker.docker_container:
+    name: yolo-backend
+    image: pharesd/yolo-backend:v0.0.1
+    command: tail -f /dev/null
+    #restart_policy: always
+    ports:
+    - 5000:5000
+    networks:
+    - name: yolo-network
