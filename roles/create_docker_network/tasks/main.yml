@@ -1,9 +1,10 @@
+---
 - name: Create yolo network
   community.docker.docker_network:
     name: yolo-network
     state: present
-    #driver_options:
-    #  com.docker.network.bridge.name: net2
+    driver_options:
+      com.docker.network.bridge.name: net2
     #ipam_config:
     #- subnet: 172.23.27.0/24
     #  gateway: 172.23.27.2
