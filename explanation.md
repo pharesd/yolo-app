@@ -58,7 +58,5 @@ The project directory structure looks like this:
     ```bash
     vagrant destroy -f 
 
-
-
 ## Accessing the Application
 Once the provisioning is complete, you can access your Dockerized application via the VM's IP address or domain name. Be sure to update the IP address or hostname in your application configuration as needed.
