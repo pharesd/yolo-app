@@ -35,7 +35,7 @@ The project directory structure looks like this:
 
 ## Getting Started
 
-1. Clone this repository to your local machine:
+1. **Clone this repository to your local machine:**
 
    ```bash
    git clone https://github.com/pharesd/yolo.git
@@ -44,9 +44,20 @@ The project directory structure looks like this:
     ```bash
     cd yolo
 
-3. Start the VM using Vagrant:
+3. **Start the VM using Vagrant:**
     ```bash
     vagrant up
+
+4. **Stopping the Application:**
+    To gracefully stop the application - stop the application and shut down the VM, use the following command:
+    ```bash
+    vagrant halt
+
+5. **Killing the Application:**
+    *Destroy the VM:* To completely destroy the VM and remove all associated resources, including the application, use the following command:
+    ```bash
+    vagrant destroy -f 
+
 
 
 ## Accessing the Application
