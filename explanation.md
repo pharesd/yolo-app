@@ -1,6 +1,6 @@
 # Vagrant and Ansible Project README
 
-This project uses Vagrant and Ansible to set up a virtual machine (VM) and deploy a Dockerized application. The project structure includes a Vagrantfile, an Ansible playbook, and two roles. The first role installs Docker and its dependencies, whereas the second role clones the application's Git repository, changes the directory to the root directory, and deploys the application using the `docker-compose up -d` command.
+This project uses Vagrant and Ansible to set up a virtual machine (VM) and deploy a Dockerized microservices application. The project structure includes a Vagrantfile, an Ansible playbook, and roles.
 
 ## Prerequisites
 
