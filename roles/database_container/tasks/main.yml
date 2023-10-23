@@ -1,15 +1,12 @@
 
 - name: Deploy mongodb
   community.docker.docker_container:
-    name: mongo-db
+    name: yolo-mongo-db
     image: mongo
-    restart_policy: always
     ports:
     - "27017:27017"
-    #volumes:
-    #- name: yolo-vol
-    #- type: volume
-    #  source: /dev/sda2
-    #  target: /data/db
+    volumes:
+      - yolo-vol: /data/db
     networks:
     - name: yolo-network
+    state: started
