@@ -15,16 +15,23 @@ Before you begin, ensure you have the following prerequisites installed on your 
 The project directory structure looks like this:
 
 - `Vagrantfile`: Defines the VM setup using Vagrant.
-- `ansible/`: Directory containing Ansible-related files.
-  - `playbook.yml`: Ansible playbook for provisioning the VM.
-  - `roles/`: Directory containing Ansible roles.
-    - `docker/`: Role for installing Docker and its dependencies.
-      - `tasks/main.yml`: Tasks for Docker installation.
-      - `defaults/main.yml`: Role-specific variables (e.g., Docker Compose path).
-    - `app/`: Role for deploying the application.
-      - `tasks/main.yml`: Tasks for cloning the Git repository and deploying the app.
-      - `defaults/main.yml`: Role-specific variables (if needed).
-- `README.md`: This documentation file.
+- `playbook.yml`: Ansible playbook for provisioning the VM.
+- `roles/`: Directory containing Ansible roles.
+    - `install_docker/`: Role for installing Docker and its dependencies.
+        - `tasks/main.yml`: Tasks for Docker installation.
+    - `git_clone/`: Role for cloning the Git repository.
+        - `tasks/main.yml`: Tasks for cloning the Git repository.
+    - `create_docker_network/`: Role for creating a Docker network.
+        - `tasks/main.yml`: Tasks for creating the Docker network.
+    - `create_docker_volume/`: Role for creating a Docker volume.
+        - `tasks/main.yml`: Tasks for creating the Docker volume.
+    - `database_container/`: Role for creating the database container.
+        - `tasks/main.yml`: Tasks for setting up the database container.
+    - `backend_container/`: Role for creating the backend application container.
+        - `tasks/main.yml`: Tasks for setting up the backend container.
+    - `client_container/`: Role for creating the client application container.
+        - `tasks/main.yml`: Tasks for setting up the client container.
+- `explanation.md`: This documentation file.
 
 ## Getting Started
 
