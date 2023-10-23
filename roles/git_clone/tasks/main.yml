@@ -1,0 +1,12 @@
+---
+- name: Clone the Git repository
+  git:
+    repo: https://github.com/pharesd/yolo.git
+    dest: /home/devops/yolo
+    update: true
+
+- name: Change to the application directory
+  command: cd /home/devops/yolo
+  args:
+    chdir: /home/devops/yolo
+    creates: /home/devops/yolo
