@@ -13,10 +13,13 @@ spec:
         app: backend
     spec:
       containers:
-      - name: backend
-        image: pharesd/yolo-backend:v0.0.1
-        ports:
-        - containerPort: 5000
+        - name: backend
+          image: pharesd/yolo-backend:v0.0.1
+          ports:
+            - containerPort: 5000
+          env:
+            - name: MONGO_HOST
+              value: mongo-service 
 
 ---
 apiVersion: v1
