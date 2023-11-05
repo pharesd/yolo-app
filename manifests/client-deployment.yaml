@@ -13,10 +13,11 @@ spec:
         app: client
     spec:
       containers:
-      - name: client
-        image: pharesd/yolo-client:v0.0.1
-        ports:
-        - containerPort: 3000
+        - name: client
+          image: pharesd/yolo-client:v0.0.1
+          env:
+            - name: BACKEND_HOST
+              value: backend-service
 
 ---
 apiVersion: v1
@@ -27,6 +28,6 @@ spec:
   selector:
     app: client
   ports:
-  - protocol: TCP
-    port: 3000
-    targetPort: 3000
+    - protocol: TCP
+      port: 3000
+
