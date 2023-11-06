@@ -1,19 +1,18 @@
-# YoloApp Deployment on Kubernetes
+# YoloApp Deployment on Google Kubernetes Engine (GKE)
 
-This repository contains the configuration files and instructions to deploy the YoloApp application on a Kubernetes cluster. YoloApp is a multi-container application consisting of a MongoDB database, a backend service, and a client application.
+This repository contains the configuration files and instructions to deploy the YoloApp application on Google Kubernetes Engine (GKE). YoloApp is a multi-container application consisting of a MongoDB database, a backend service, and a client application.
 
 ## Prerequisites
 
-Before deploying the YoloApp, make sure you have the following prerequisites in place:
+Before deploying the YoloApp on GKE, make sure you have the following prerequisites in place:
 
-- A running Kubernetes cluster.
-- `kubectl` CLI tool configured to access your Kubernetes cluster.
+- A running Google Kubernetes Engine cluster.
+- `kubectl` CLI tool configured to access your GKE cluster.
 - Docker installed to build and push custom Docker images if needed.
 
 ## Deployment Steps
 
-Follow the steps below to deploy the YoloApp on your Kubernetes cluster:
-
+Follow the steps below to deploy the YoloApp on your GKE cluster:
 ### 1. Create Persistent Volumes (Optional)
 
 If you want to use persistent storage for the MongoDB database, create a Persistent Volume (PV) and a Persistent Volume Claim (PVC) by modifying the provided YAML files:
