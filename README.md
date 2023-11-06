@@ -18,10 +18,11 @@ Follow the steps below to deploy the YoloApp on your Kubernetes cluster:
 
 If you want to use persistent storage for the MongoDB database, create a Persistent Volume (PV) and a Persistent Volume Claim (PVC) by modifying the provided YAML files:
 
-- `mongo-pv.yaml`: Define the Persistent Volume.
-- `mongo-pvc.yaml`: Define the Persistent Volume Claim.
+- `mongo-pv.yaml`: Define the Persistent Volume and the Persistent Volume Claim.
 
-Apply these files using `kubectl apply -f mongo-pv.yaml` and `kubectl apply -f mongo-pvc.yaml`.
+Apply these files using `kubectl apply -f mongo-pv.yaml`
+```bash
+kubectl apply -f mongo-pv.yaml
 
 ### 2. Deploy MongoDB StatefulSet and Headless Service
 
