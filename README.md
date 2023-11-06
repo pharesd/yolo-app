@@ -20,9 +20,10 @@ If you want to use persistent storage for the MongoDB database, create a Persist
 
 - `mongo-pv.yaml`: Define the Persistent Volume and the Persistent Volume Claim.
 
-Apply these files using `kubectl apply -f mongo-pv.yaml`
+Deploy the persistent volume using:
 ```bash
 kubectl apply -f mongo-pv.yaml
+```
 
 ### 2. Deploy MongoDB StatefulSet and Headless Service
 
