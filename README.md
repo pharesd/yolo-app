@@ -27,19 +27,31 @@ kubectl apply -f mongo-pv.yaml
 
 ### 2. Deploy MongoDB StatefulSet and Headless Service
 
-- Apply the MongoDB StatefulSet and Headless Service YAML file using `kubectl apply -f mongo-statefulset.yaml`.
+- Apply the MongoDB StatefulSet and Headless Service YAML file using
+```bash
+ kubectl apply -f mongo-statefulset.yaml
+ ```
 
 ### 3. Deploy Backend Deployment and Service
 
-- Apply the Backend Deployment and Service YAML file using `kubectl apply -f backend-deployment.yaml`.
+- Apply the Backend Deployment and Service YAML file using:
+```bash
+ kubectl apply -f backend-deployment.yaml
+ ```
 
 ### 4. Deploy Client Deployment and Service
 
-- Apply the Client Deployment and Service YAML file using `kubectl apply -f client-deployment.yaml`.
+- Apply the Client Deployment and Service YAML file using:
+```bash
+ kubectl apply -f client-deployment.yaml
+ ```
 
 ### 5. Apply MongoDB Headless Service
 
-- Apply the MongoDB Headless Service YAML file using `kubectl apply -f mongo-headless-service.yaml`.
+- Apply the MongoDB Headless Service YAML file using:
+```bash
+ kubectl apply -f mongo-headless-service.yaml
+ ```
 
 ### 6. Verify Deployment
 
