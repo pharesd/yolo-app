@@ -61,3 +61,14 @@ Use the following commands to verify the deployment:
 kubectl get pods
 kubectl get services
 ```
+You should see the pods and services running successfully.
+
+### 7. Access the YoloApp
+To access the YoloApp, use the client's service IP and port (e.g., http://<Client-Service-IP>:3000). You can access the client application in a web browser.
+
+## Customization
+You can customize the YAML files to adjust resources, image versions, and other settings as per your project requirements.
+
+## Clean Up
+To clean up the deployment, you can use the `kubectl delete` command for each resource, starting from the services and deployments and ending with the MongoDB StatefulSet.
+
