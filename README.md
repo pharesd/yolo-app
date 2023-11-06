@@ -48,6 +48,7 @@ Use the following commands to verify the deployment:
 ```bash
 kubectl get pods
 kubectl get services
+```
 
 # Vagrant and Ansible Project README
 
